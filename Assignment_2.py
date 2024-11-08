@@ -13,14 +13,28 @@ def binary_to_decimal(number, system=2):
         final = final * system + digits.index(digit)
     return final
 
+def sixteen_to_decimal(number, system=16):
+    final = 0
+    for digit in number:
+        final = final * system + digits.index(digit)
+    return final
+
+
+
 
 def main():
     number = input("Enter a number (if decimal - without prefix, if binary - with prefix 0b) : ")
-    while not (number[0:2] == "0b" or number.isdecimal()):
+    while not (number[0:2] == "0b" or number.isdecimal() or number[0:2] == "0x"):
         number = input("Enter a number (if decimal - without prefix, if binary - with prefix 0b) : ")
     if number[0:2] == '0b':
-        decimal_from_binary = binary_to_decimal(number[2:])
         print(f"Your number {number} in decimal - {binary_to_decimal(number[2:])}")
+    elif number[0:2] == '0x':
+        decimal_from_16 = sixteen_to_decimal(number[2:])
+        what_system = input("What system do you want to convert to? (decimal - d, binary - b) : ")
+        if what_system == 'd':
+            print(f"Your number {number} in hexadecimal number system - {decimal_from_16}")
+        else:
+            print(f"Your number {number} in hexadecimal number system - {decimal_to_binary(decimal_from_16)}")
     else:
         print(f"Your number {number} in binary - {decimal_to_binary(int(number))}")
     again = input("Do you want to repeat? y/n : ")
