@@ -23,5 +23,10 @@ def main():
         print(f"Your number {number} in decimal - {binary_to_decimal(number[2:])}")
     else:
         print(f"Your number {number} in binary - {decimal_to_binary(int(number))}")
+    again = input("Do you want to repeat? y/n : ")
+    if again == 'y':
+        main()
+    else:
+        print("Ok! Seeyuh")
 
 main()
